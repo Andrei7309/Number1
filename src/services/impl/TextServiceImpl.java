@@ -1,5 +1,5 @@
 package services.impl;
 
 public interface TextServiceImpl {
-    void start();
+    void service();
 }

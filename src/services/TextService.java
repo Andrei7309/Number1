@@ -3,12 +3,11 @@ package services;
 import services.impl.TextServiceImpl;
 
 import java.io.IOException;
-import java.util.Map;
 
 public class TextService implements TextServiceImpl {
 
     @Override
-    public void start() {
+    public void service() {
         int number = (int) (Math.random() * 100);
         String url = "http://numbersapi.com/" + number + "/trivia";
         String response;
@@ -19,8 +18,7 @@ public class TextService implements TextServiceImpl {
             throw new RuntimeException(e);
         }
         TextUtils textUtils = new TextUtils();
-        Map<Character, Integer> charCountMap = textUtils.countChars(response);
-        Logger logger1 = new Logger(response, charCountMap);
-        logger1.print();
+        Logger logger1 = new Logger();
+        logger1.print(response, textUtils.countChars(response));
     }
 }
