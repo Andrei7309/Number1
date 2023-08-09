@@ -11,7 +11,7 @@ public class Logger {
             totalFrequency += entry.getValue();
         }
         float averageFrequency = totalFrequency / charCountMap.size();
-        System.out.println("Среднее значение частоты " + totalFrequency +  " / " + charCountMap.size()
+        System.out.println("Среднее значение частоты " + (int) totalFrequency +  " / " + charCountMap.size()
         + " = " + averageFrequency);
         System.out.println("Символ наиболее близкого значения частоты к среднему значанию: " +
                closestSymbol(charCountMap, averageFrequency) + " (" + (int) closestSymbol(charCountMap, averageFrequency) +  ")" );
@@ -19,7 +19,7 @@ public class Logger {
 
     String ending(int value) {
         String answer;
-        if ((value % 10 == 2) || (value % 10 == 3) || (value % 10 == 4)) {
+        if (((value % 10 == 2) && (value != 12)) || ((value % 10 == 3) && (value != 13)) || ((value % 10 == 4) && (value != 14))) {
             answer = "раза";
         } else {
            answer = "раз";
