@@ -1,5 +1,6 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Logger {
@@ -11,10 +12,11 @@ public class Logger {
             totalFrequency += entry.getValue();
         }
         float averageFrequency = totalFrequency / charCountMap.size();
-        System.out.println("Среднее значение частоты " + (int) totalFrequency +  " / " + charCountMap.size()
+        System.out.println("Среднее значение частоты: " + (int) totalFrequency +  " / " + charCountMap.size()
         + " = " + averageFrequency);
-        System.out.println("Символ наиболее близкого значения частоты к среднему значанию: " +
-               closestSymbol(charCountMap, averageFrequency) + " (" + (int) closestSymbol(charCountMap, averageFrequency) +  ")" );
+        System.out.println("Символ наиболее близкого значения частоты к среднему значанию: ");
+               closestSymbol(charCountMap, averageFrequency).forEach(cl ->
+                       System.out.println(cl.toString() + " (" + (int) cl + ")"));
     }
 
     String ending(int value) {
@@ -27,15 +29,21 @@ public class Logger {
         return answer;
     }
 
-    char closestSymbol(Map<Character, Integer> charCountMap, float averageFrequency){
-        char closestSymbol = ' ';
-        int closestFrequencyDifference = Integer.MAX_VALUE;
+    ArrayList<Character> closestSymbol(Map<Character, Integer> charCountMap, float averageFrequency){
+        int closestSymbol = 0;
+        float closestFrequencyDifference = Integer.MAX_VALUE;
+        ArrayList<Character> allSymbol = new ArrayList<>();
         for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
             if ((Math.abs(entry.getValue() - averageFrequency)) < closestFrequencyDifference){
-                closestSymbol = entry.getKey();
-                closestFrequencyDifference = Math.abs(entry.getKey());
+                closestSymbol = entry.getValue();
+                closestFrequencyDifference = Math.abs(entry.getValue() - averageFrequency);
             }
         }
-        return closestSymbol;
+        for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
+            if (entry.getValue() == closestSymbol){
+                allSymbol.add(entry.getKey());
+            }
+        }
+        return allSymbol;
     }
 }

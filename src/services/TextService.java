@@ -7,7 +7,7 @@ import java.io.IOException;
 public class TextService implements TextServiceImpl {
 
     @Override
-    public void service() {
+    public void countAndFrequencySympol() {
         int number = (int) (Math.random() * 100);
         String url = "http://numbersapi.com/" + number + "/trivia";
         String response;
