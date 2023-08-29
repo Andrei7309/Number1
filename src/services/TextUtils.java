@@ -5,7 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class TextUtils { //не изм сделать
+public final class TextUtils { //не изм сделать
+
+    private TextUtils() {
+
+    }
     public static Map<Character, Integer> countChars(String str) {
 
         Map<Character, Integer> charCountMap = new HashMap<>();

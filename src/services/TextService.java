@@ -1,5 +1,5 @@
 package services;
 
-public  interface TextService {
+public interface TextService {
    void countAndFrequencySymbol(String response);
 }

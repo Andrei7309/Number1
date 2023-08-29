@@ -1,6 +1,6 @@
 package services.exception;
 
-public class ConnectionException extends Exception {
+public class ConnectionException extends RuntimeException {
     private String message;
 
     public ConnectionException(String message) {
@@ -11,4 +11,5 @@ public class ConnectionException extends Exception {
     public String getMessage() {
         return message;
     }
+
 }
